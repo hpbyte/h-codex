@@ -1,0 +1,33 @@
+{
+  "name": "h-codex",
+  "version": "0.1.0",
+  "description": "A semantic code search tool for intelligent, cross-repo context retrieval.",
+  "author": "Htoo Pyae Lwin",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev": "pnpm --filter @h-codex/core run dev",
+    "db:generate": "pnpm --filter @h-codex/core run db:generate",
+    "db:migrate": "pnpm --filter @h-codex/core run db:migrate",
+    "lint:fix": "eslint packages --ext .ts --fix",
+    "format": "prettier --write \"packages/**/*.ts\""
+  },
+  "keywords": [
+    "code-intelligence",
+    "embeddings",
+    "ast",
+    "chunking",
+    "typescript"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  }
+}

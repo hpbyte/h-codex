@@ -1,0 +1,37 @@
+{
+  "name": "@hpbyte/h-codex-mcp",
+  "version": "0.1.0",
+  "description": "Model Context Protocol for h-codexx",
+  "author": "Htoo Pyae Lwin",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "pnpm run clean && tsc --build --force",
+    "start": "tsx src/index.ts",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "model-context-protocol",
+    "code-indexing"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@hpbyte/h-codex-core": "workspace:*",
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.9",
+    "tsx": "^4.7.0",
+    "typescript": "^5.8.3"
+  }
+}

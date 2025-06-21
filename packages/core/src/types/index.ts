@@ -1,0 +1,32 @@
+import { codeChunks, embeddings } from '../storage/schemas'
+
+export type CodeChunk = typeof codeChunks.$inferSelect
+export type CodeChunkInsert = typeof codeChunks.$inferInsert
+
+export type Embedding = typeof embeddings.$inferSelect
+
+export type SupportedLanguage =
+  | 'typescript'
+  | 'javascript'
+  | 'typescript-react'
+  | 'javascript-react'
+
+export interface SearchOptions {
+  limit?: number
+  threshold?: number
+  filePaths?: string[]
+  languages?: SupportedLanguage[]
+  nodeTypes?: string[]
+  excludeFilePaths?: string[]
+  minSimilarity?: number
+  diversityFactor?: number
+  contextLines?: number
+}
+
+export interface SearchResult {
+  chunk: CodeChunk
+  similarity: number
+  context?: CodeChunk[]
+  relevanceScore?: number
+  rank: number
+}

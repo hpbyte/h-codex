@@ -1,0 +1,44 @@
+{
+  "name": "@hpbyte/h-codex-core",
+  "version": "0.1.0",
+  "description": "Core indexing and search functionality for h-codex",
+  "author": "Htoo Pyae Lwin",
+  "license": "MIT",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && tsc",
+    "dev": "tsx index.ts",
+    "db:generate": "drizzle-kit generate --config drizzle.config.ts",
+    "db:migrate": "drizzle-kit migrate --config drizzle.config.ts",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.2",
+    "fast-glob": "^3.3.3",
+    "openai": "^5.6.0",
+    "postgres": "^3.4.7",
+    "tree-sitter": "^0.21.0",
+    "tree-sitter-javascript": "^0.21.0",
+    "tree-sitter-typescript": "^0.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "drizzle-kit": "^0.31.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.8.3"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hpbyte/h-codex.git",
+    "directory": "packages/core"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
