@@ -2,8 +2,8 @@ import { migrate } from 'drizzle-orm/postgres-js/migrator'
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 
+import { dbConnectionString } from '@/config/database'
 import * as schema from './schemas'
-import { dbConnectionString } from '../utils/config'
 
 async function runMigrations() {
   try {
@@ -20,7 +20,7 @@ async function runMigrations() {
     await client`CREATE EXTENSION IF NOT EXISTS vector`
     console.log('✅ Vector extension enabled')
 
-    await migrate(db, { migrationsFolder: './drizzle' })
+    await migrate(db, { migrationsFolder: './core/migrations/drizzle' })
     console.log('✅ Migrations completed successfully')
 
     await client.end()

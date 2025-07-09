@@ -1,8 +1,8 @@
 import type { Config } from 'drizzle-kit'
 
 const config: Config = {
-  schema: './src/database/schemas',
-  out: './drizzle',
+  schema: './lib/storage/schemas',
+  out: './migrations/drizzle',
   dialect: 'postgresql',
   dbCredentials: {
     host: process.env.DB_HOST || 'localhost',

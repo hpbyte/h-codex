@@ -1,21 +1,21 @@
 import OpenAI from 'openai'
 
-import type { CodeChunkInsert } from '../types'
-import { appConfig } from '../utils/config'
+import { embeddingsConfig } from '@/config/database'
+import type { CodeChunkInsert } from '@/types'
 
-export class EmbeddingsService {
+export class Embedder {
   private openai: OpenAI
 
   constructor() {
     this.openai = new OpenAI({
-      apiKey: appConfig.OPENAI_API_KEY,
+      apiKey: embeddingsConfig.apiKey,
     })
   }
 
   async generateEmbeddings(texts: string[]) {
     try {
       const response = await this.openai.embeddings.create({
-        model: appConfig.EMBEDDING_MODEL,
+        model: embeddingsConfig.model,
         input: texts,
         encoding_format: 'float',
       })
@@ -73,4 +73,4 @@ export class EmbeddingsService {
   }
 }
 
-export const embeddingsService = new EmbeddingsService()
+export const embedder = new Embedder()

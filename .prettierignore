@@ -3,3 +3,4 @@ dist/
 drizzle/
 *.d.ts
 bun.lock 
+test-repo/

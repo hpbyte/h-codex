@@ -1,7 +1,7 @@
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 
-import { dbConnectionString } from '../utils/config'
+import { dbConnectionString } from '@/config/database'
 import * as schema from './schemas'
 
 class DatabaseConnection {

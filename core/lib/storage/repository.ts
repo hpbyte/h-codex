@@ -1,7 +1,7 @@
 import { eq, sql, cosineDistance } from 'drizzle-orm'
 
 import type { CodeChunkInsert } from '../types'
-import { appConfig } from '../utils/config'
+import { embeddingsConfig } from '../../config/database'
 import { codeChunks as codeChunksTable, embeddings as embeddingsTable } from './schemas'
 import { db } from './connection'
 
@@ -31,8 +31,8 @@ export class Repository {
 
   async findSimilarChunks(
     queryEmbedding: number[],
-    limit = appConfig.SEARCH_RESULTS_LIMIT,
-    threshold = appConfig.SIMILARITY_THRESHOLD
+    limit = embeddingsConfig.searchResultsLimit,
+    threshold = embeddingsConfig.similarityThreshold
   ) {
     const similarChunks = await db
       .select({

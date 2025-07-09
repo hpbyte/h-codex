@@ -1,0 +1,46 @@
+{
+  "name": "h-codex",
+  "version": "1.0.0",
+  "description": "A semantic code search tool for intelligent, cross-repo context retrieval.",
+  "main": "core/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "bun build core/index.ts --outdir dist --target node",
+    "db:generate": "drizzle-kit generate --config core/drizzle.config.ts",
+    "db:migrate": "bun run core/lib/storage/migrate.ts",
+    "db:setup": "bun run core/lib/storage/setup.ts && bun run db:migrate",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"**/*.ts\""
+  },
+  "keywords": [
+    "code-intelligence",
+    "embeddings",
+    "ast",
+    "chunking",
+    "typescript"
+  ],
+  "author": "Htoo Pyae Lwin",
+  "license": "MIT",
+  "dependencies": {
+    "drizzle-orm": "^0.44.2",
+    "openai": "^5.6.0",
+    "pg": "^8.16.2",
+    "postgres": "^3.4.7",
+    "tree-sitter": "^0.21.0",
+    "tree-sitter-javascript": "^0.21.0",
+    "tree-sitter-typescript": "^0.21.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@types/bun": "^1.2.16",
+    "@types/pg": "^8.15.4",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
+    "drizzle-kit": "^0.31.1",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  }
+}

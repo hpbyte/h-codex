@@ -23,6 +23,13 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+
+    // Paths
+    "paths": {
+      "@/config/*": ["./core/config/*"],
+      "@/lib/*": ["./core/lib/*"],
+      "@/types": ["./core/lib/types/index.ts"]
+    }
   }
 }

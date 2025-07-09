@@ -1,13 +1,20 @@
 # h-codex
 
-A semantic code searcher (like Cursor) for intelligent code discovery.
+A semantic code search tool for intelligent, cross-repo context retrieval.
 
 - **AST-Based Chunking**: Intelligent code parsing using Abstract Syntax Trees for optimal chunk boundaries
 - **Semantic Search**: Powered by OpenAI's `text-embedding-3-small` model for contextual understanding
 - **Vector Database**: `PostgreSQL` with `pgvector` extension for similarity search
 - **Multi-Language Support**: `TypeScript`, `JavaScript`, and extensible for other languages
 
-## 🐳 Quick Start with Docker
+## 🛠️ Development
+
+### Prerequisites
+
+- [Bun](https://bun.sh/)
+- [Docker](https://www.docker.com/) - For running PostgreSQL with pgvector
+
+### Installation
 
 1. **Clone the repository**
 
@@ -16,17 +23,38 @@ A semantic code searcher (like Cursor) for intelligent code discovery.
    cd h-codex
    ```
 
-2. **Environment file**
+2. **Set up environment variables**
 
    ```bash
    cp .env.example .env
    ```
 
-3. **Run the initial setup script**
+   Edit the `.env` file with your OpenAI API key and other configuration options.
+
+3. **Install dependencies**
 
    ```bash
-   cd scripts && ./docker-setup.sh
+   bun install
    ```
+
+4. **Start PostgreSQL database**
+
+   ```bash
+   cd dev && docker compose up -d
+   ```
+
+5. **Set up the database**
+
+   ```bash
+   bun run db:setup
+   ```
+
+### Available Scripts
+
+- `bun run db:generate --name migration_name` - Generate database migrations
+- `bun run db:migrate` - Run database migrations
+- `bun run lint:fix` - Fix linting issues
+- `bun run format` - Format code using Prettier
 
 ## 🔧 Configuration Options
 
@@ -38,28 +66,3 @@ A semantic code searcher (like Cursor) for intelligent code discovery.
 | `CHUNK_OVERLAP`        | Overlap between chunks           | `200`                    |
 | `SEARCH_RESULTS_LIMIT` | Max search results returned      | `10`                     |
 | `SIMILARITY_THRESHOLD` | Minimum similarity for results   | `0.7`                    |
-
-## 🎯 Supported Code Constructs
-
-The AST chunker recognizes and processes:
-
-- **Functions**: Function declarations, arrow functions, function expressions
-- **Classes**: Class declarations with methods
-- **Interfaces**: TypeScript interface definitions
-- **Type Aliases**: TypeScript type definitions
-- **Exports**: Default and named exports
-- **Methods**: Class methods with proper context
-
-## 🚧 Development
-
-### Run the deps
-
-```bash
-docker compose --profile deps up -d
-```
-
-### Run the backend
-
-```bash
-cd backend && bun run dev
-```
