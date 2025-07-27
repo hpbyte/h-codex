@@ -125,6 +125,10 @@ export class ChunkEmbeddingsRepository {
     return contextualResults
   }
 
+  async clearChunkEmbeddings(projectId: string) {
+    return db.delete(codeChunksTable).where(eq(codeChunksTable.projectId, projectId))
+  }
+
   private diversifyResults<T extends { chunk: CodeChunk; similarity: number }>(
     results: T[],
     diversityFactor: number

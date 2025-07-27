@@ -56,6 +56,18 @@ export class Indexer {
       throw new Error(`Failed to index file ${filePath}: ${error}`)
     }
   }
+
+  async clear(projectName: string) {
+    try {
+      const project = await projectsRepository.get(projectName)
+
+      if (!project) throw new Error(`Project ${projectName} not found`)
+
+      return await chunkEmbeddingsRepository.clearChunkEmbeddings(project.id)
+    } catch (error) {
+      throw new Error(`Failed to clear index for project ${projectName}: ${error}`)
+    }
+  }
 }
 
 export const indexer = new Indexer()
