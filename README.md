@@ -10,7 +10,11 @@ A semantic code search tool for intelligent, cross-repo context retrieval.
 - **Multi-Language Support**: TypeScript, JavaScript, and extensible for other languages
 - **MCP Integration**: Seamlessly connects with AI coding assistants through Model Context Protocol
 
-## 🚀 Getting started
+## 🚀 Demo
+
+![demo](./assets/demo-1.gif)
+
+## 💻 Getting Started
 
 h-codex can be integrated with AI assistants through the Model Context Protocol.
 
