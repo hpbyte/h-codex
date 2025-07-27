@@ -51,6 +51,7 @@ The server uses stdio transport and follows the standard MCP protocol. It can be
 
 | Tool Name     | Description                                | Parameters                                      |
 | ------------- | ------------------------------------------ | ----------------------------------------------- |
+| `code-clear`  | Clear the indexed information of project   | `project`: String - The project to clear index  |
 | `code-search` | Semantically search through indexed code   | `query`: String - The search query text         |
 | `code-index`  | Index a directory/repository for searching | `path`: String - Path to the directory to index |
 

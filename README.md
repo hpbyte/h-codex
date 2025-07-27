@@ -8,6 +8,7 @@ A semantic code search tool for intelligent, cross-repo context retrieval.
 - **Embedding & Semantic Search**: Using OpenAI's `text-embedding-3-small` model (support for `voyage-code-3` planned)
 - **Vector Database**: PostgreSQL with pgvector extension for efficient similarity search
 - **Multi-Language Support**: TypeScript, JavaScript, and extensible for other languages
+- **Multi-Project Support**: Index and search multiple projects
 - **MCP Integration**: Seamlessly connects with AI coding assistants through Model Context Protocol
 
 ## 🚀 Demo
