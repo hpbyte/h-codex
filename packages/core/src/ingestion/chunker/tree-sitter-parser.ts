@@ -18,8 +18,6 @@ export class TreeSitterParser {
     const content = await fs.readFile(filePath, 'utf-8')
     const tree = this.parser.parse(content)
 
-    console.log('total content length: ', content.length)
-
     return tree.rootNode
   }
 

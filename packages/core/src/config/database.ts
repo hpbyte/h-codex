@@ -1,4 +1,4 @@
-import { getEnvVar } from './helper'
+import { getEnvVar } from '../utils'
 
 export const dbConnectionString = getEnvVar(
   'DB_CONNECTION_STRING',

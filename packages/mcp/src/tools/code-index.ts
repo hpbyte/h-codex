@@ -3,7 +3,7 @@ import { indexer } from '@hpbyte/h-codex-core'
 
 import type { Tool } from '../types'
 
-import { CodeIndexInputSchema, CodeIndexOutputSchema } from './schemas'
+import { CodeIndexInputSchema } from './schemas'
 
 class CodeIndexTool implements Tool {
   register(server: McpServer) {
@@ -13,7 +13,6 @@ class CodeIndexTool implements Tool {
         title: 'Index codebase',
         description: 'Explore and index code files in a directory path',
         inputSchema: CodeIndexInputSchema,
-        outputSchema: CodeIndexOutputSchema,
       },
       async ({ path }) => {
         try {
@@ -23,7 +22,20 @@ class CodeIndexTool implements Tool {
             content: [
               {
                 type: 'text',
-                text: JSON.stringify(result, null, 2),
+                text: JSON.stringify(
+                  result,
+                  (_, value) => {
+                    if (
+                      typeof value === 'function' ||
+                      value instanceof RegExp ||
+                      value instanceof Error
+                    ) {
+                      return value.toString()
+                    }
+                    return value
+                  },
+                  2
+                ),
               },
             ],
           }

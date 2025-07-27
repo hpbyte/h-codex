@@ -11,9 +11,10 @@ export class CSTChunker {
   private coalesce = 50
   private filePath = ''
   private fileContent = ''
+  private projectId = ''
   private language: SupportedLanguage | null = null
 
-  async processFile(filePath: string): Promise<CodeChunkInsert[]> {
+  async processFile(filePath: string, projectId: string): Promise<CodeChunkInsert[]> {
     try {
       const language = this.detectLanguage(filePath)
       const cstRootNode = await treeSitterParser.parseFile(filePath, language)
@@ -21,12 +22,17 @@ export class CSTChunker {
       this.filePath = filePath
       this.language = language
       this.fileContent = cstRootNode.text
+      this.projectId = projectId
 
       const chunks = this.chunkNode(cstRootNode)
       const processedChunks = this.processChunks(chunks)
 
       return processedChunks
     } catch (error) {
+      if (error instanceof Error && error.message.includes('Unsupported language')) {
+        return []
+      }
+
       console.error(`Error processing file ${filePath}:`, error)
       return []
     }
@@ -123,7 +129,8 @@ export class CSTChunker {
     return {
       content,
       filePath: this.filePath,
-      startLine: chunk.start + 1, // tree-sitter index starts from 0, make it human-readable
+      projectId: this.projectId,
+      startLine: chunk.start + 1, // tree-sitter index starts from 0
       endLine: chunk.end + 1,
       nodeType: chunk.nodeType,
       language: this.language!,

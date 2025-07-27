@@ -1,7 +1,11 @@
 import { integer, pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
+import { projects } from './projects.schema'
 
 export const codeChunks = pgTable('code_chunks', {
   id: uuid('id').primaryKey().defaultRandom(),
+  projectId: uuid('project_id')
+    .notNull()
+    .references(() => projects.id, { onDelete: 'cascade' }),
   content: text('content').notNull(),
   filePath: varchar('file_path', { length: 512 }).notNull(),
   startLine: integer('start_line').notNull(),

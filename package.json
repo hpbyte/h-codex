@@ -1,15 +1,15 @@
 {
   "name": "h-codex",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "A semantic code search tool for intelligent, cross-repo context retrieval.",
   "author": "Htoo Pyae Lwin",
   "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "pnpm -r run build",
-    "dev": "pnpm --filter @h-codex/core run dev",
-    "db:generate": "pnpm --filter @h-codex/core run db:generate",
-    "db:migrate": "pnpm --filter @h-codex/core run db:migrate",
+    "dev": "pnpm --filter @hpbyte/h-codex-core run dev",
+    "db:generate": "pnpm --filter @hpbyte/h-codex-core run db:generate",
+    "db:migrate": "pnpm --filter @hpbyte/h-codex-core run db:migrate",
     "lint:fix": "eslint packages --ext .ts --fix",
     "format": "prettier --write \"packages/**/*.ts\""
   },

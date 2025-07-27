@@ -1,12 +1,15 @@
 import { embedder } from '../ingestion/embedder'
-import { repository } from '../storage/repository'
+import { chunkEmbeddingsRepository } from '../storage/chunk-embeddings.repository'
 import type { SearchOptions, SearchResult } from '../types'
 
 export class SemanticSearch {
   async search(query: string, options: SearchOptions = {}) {
     const queryEmbeddings = await this.getQueryEmbeddings(query)
 
-    const contextResults = await repository.findSimilarChunksWithContext(queryEmbeddings, options)
+    const contextResults = await chunkEmbeddingsRepository.findSimilarChunksWithContext(
+      queryEmbeddings,
+      options
+    )
 
     const results = contextResults.map((result, index) => ({
       chunk: result.chunk,

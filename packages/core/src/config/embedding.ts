@@ -1,4 +1,4 @@
-import { getEnvVar, getEnvNumber } from './helper'
+import { getEnvVar, getEnvNumber } from '../utils'
 
 interface EmbeddingsConfig {
   apiKey: string

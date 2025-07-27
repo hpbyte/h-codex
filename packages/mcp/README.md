@@ -1,9 +1,10 @@
-# @h-codex/mcp
+# @hpbyte/h-codex-mcp
 
 Model Context Protocol server for h-codex, providing AI assistants with tools to interact with code indexing and search functionality.
 
 ## ✨ Features
 
+- Multiple Projects Support: Index and search multiple projects
 - **Semantic Search**: Find relevant code snippets using natural language queries
 - **Code Indexing**: Index repositories for semantic code search
 - **AI Assistant Integration**: Seamlessly works with AI assistants that support MCP
@@ -20,7 +21,7 @@ h-codex MCP server can be integrated with various AI assistants that support the
   "mcpServers": {
     "h-codex": {
       "command": "npx",
-      "args": ["@h-codex/mcp"],
+      "args": ["@hpbyte/h-codex-mcp"],
       "env": {
         "OPENAI_API_KEY": "your_openai_api_key_here",
         "DB_CONNECTION_STRING": "postgresql://postgres:password@localhost:5432/h-codex"
@@ -37,7 +38,7 @@ h-codex MCP server can be integrated with various AI assistants that support the
    - **Name**: `h-codex`
    - **Type**: `STDIO`
    - **Command**: `npx`
-   - **Arguments**: `["@h-codex/mcp"]`
+   - **Arguments**: `["@hpbyte/h-codex-mcp"]`
    - **Environment Variables**:
      _ `OPENAI_API_KEY`: `your-openai-api-key`
      _ And any additional database configuration variables
@@ -80,22 +81,20 @@ cd h-codex
 pnpm install
 
 # Start development server with hot reload
-pnpm --filter @h-codex/mcp dev
+pnpm --filter @hpbyte/h-codex-mcp dev
 ```
 
 ### Building
 
 ```bash
 # Build for production
-pnpm --filter @h-codex/mcp build
+pnpm --filter @hpbyte/h-codex-mcp build
 ```
 
 ## 🔮 Upcoming Features
 
 - [ ] Enhanced code analysis tools
-- [ ] Project structure visualization
 - [ ] Dependency graph analysis
-- [ ] Integration with additional MCP clients
 
 ## 📄 License
 

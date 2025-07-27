@@ -1,6 +1,6 @@
 {
   "name": "@hpbyte/h-codex-core",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Core indexing and search functionality for h-codex",
   "author": "Htoo Pyae Lwin",
   "license": "MIT",
@@ -40,5 +40,11 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": [
+    "code-intelligence",
+    "embeddings",
+    "ast",
+    "tree-sitter"
+  ]
 }

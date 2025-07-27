@@ -1,12 +1,13 @@
 import { eq, sql, cosineDistance, and, inArray } from 'drizzle-orm'
 
 import { embeddingsConfig } from '../config/embedding'
+import { projectsRepository } from './projects.repository'
 import { codeChunks as codeChunksTable, embeddings as embeddingsTable } from './schemas'
 import { db } from './connection'
 
 import type { CodeChunk, CodeChunkInsert, SearchOptions } from '../types'
 
-export class Repository {
+export class ChunkEmbeddingsRepository {
   async insertCodeChunks(chunks: CodeChunkInsert[]) {
     return db.insert(codeChunksTable).values(chunks).onConflictDoNothing().returning()
   }
@@ -38,11 +39,21 @@ export class Repository {
       excludeFilePaths,
       minSimilarity = 0.2,
       diversityFactor = 0.8,
+      projects,
     } = options
 
     const conditions = [
       sql`1 - (${cosineDistance(embeddingsTable.embedding, queryEmbedding)}) > ${Math.max(threshold, minSimilarity)}`,
     ]
+
+    if (projects && projects.length > 0) {
+      const projectRecords = await Promise.all(projects.map(name => projectsRepository.get(name)))
+      const projectIds = projectRecords.filter(p => p !== null).map(p => p!.id)
+
+      if (projectIds.length > 0) {
+        conditions.push(inArray(codeChunksTable.projectId, projectIds))
+      }
+    }
 
     if (filePaths && filePaths.length > 0) {
       conditions.push(inArray(codeChunksTable.filePath, filePaths))
@@ -97,6 +108,7 @@ export class Repository {
           .where(
             and(
               eq(codeChunksTable.filePath, chunk.filePath),
+              eq(codeChunksTable.projectId, chunk.projectId),
               sql`${codeChunksTable.startLine} BETWEEN ${chunk.startLine - contextLines * 10} AND ${chunk.endLine + contextLines * 10}`
             )
           )
@@ -139,4 +151,4 @@ export class Repository {
   }
 }
 
-export const repository = new Repository()
+export const chunkEmbeddingsRepository = new ChunkEmbeddingsRepository()

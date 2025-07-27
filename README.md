@@ -23,7 +23,7 @@ Edit your `claude_mcp_settings.json` file:
   "mcpServers": {
     "h-codex": {
       "command": "npx",
-      "args": ["@h-codex/mcp"],
+      "args": ["@hpbyte/h-codex-mcp"],
       "env": {
         "OPENAI_API_KEY": "your_openai_api_key_here",
         "DB_CONNECTION_STRING": "postgresql://postgres:password@localhost:5432/h-codex"

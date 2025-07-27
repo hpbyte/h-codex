@@ -1,4 +1,4 @@
-# @h-codex/core
+# @hpbyte/h-codex-core
 
 Core package for h-codex semantic code indexing and search.
 
@@ -14,7 +14,7 @@ Core package for h-codex semantic code indexing and search.
 ### Installation
 
 ```bash
-pnpm add @h-codex/core
+pnpm add @hpbyte/h-codex-core
 ```
 
 ### Environment Setup
@@ -30,7 +30,7 @@ DB_CONNECTION_STRING=postgresql://postgres:password@localhost:5432/h-codex
 ### Usage Example
 
 ```typescript
-import { indexer, semanticSearch } from '@h-codex/core'
+import { indexer, semanticSearch } from '@hpbyte/h-codex-core'
 
 // Index a codebase
 const indexResult = await indexer.index('./path/to/codebase')

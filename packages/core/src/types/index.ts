@@ -1,9 +1,12 @@
-import { codeChunks, embeddings } from '../storage/schemas'
+import { codeChunks, embeddings, projects } from '../storage/schemas'
 
 export type CodeChunk = typeof codeChunks.$inferSelect
 export type CodeChunkInsert = typeof codeChunks.$inferInsert
 
 export type Embedding = typeof embeddings.$inferSelect
+
+export type Project = typeof projects.$inferSelect
+export type ProjectInsert = typeof projects.$inferInsert
 
 export type SupportedLanguage =
   | 'typescript'
@@ -21,6 +24,7 @@ export interface SearchOptions {
   minSimilarity?: number
   diversityFactor?: number
   contextLines?: number
+  projects?: string[]
 }
 
 export interface SearchResult {

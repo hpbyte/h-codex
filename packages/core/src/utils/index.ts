@@ -15,3 +15,12 @@ export function getEnvNumber(key: string, defaultValue: number): number {
   }
   return parsed
 }
+
+export function formatString(name: string) {
+  return name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}

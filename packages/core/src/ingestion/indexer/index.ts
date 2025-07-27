@@ -1,20 +1,14 @@
 import { chunker } from '../chunker'
 import { embedder } from '../embedder'
 import { fileExplorer } from '../explorer'
-import { repository } from '../../storage/repository'
+import { chunkEmbeddingsRepository } from '../../storage/chunk-embeddings.repository'
+import { projectsRepository } from '../../storage/projects.repository'
 
 export class Indexer {
-  async index(path: string): Promise<{
-    totalFiles: number
-    processedFiles: number
-    failedFiles: number
-    errors: Array<{ file: string; error: string }>
-  }> {
-    console.log(`Starting indexing of folder: ${path}`)
-
+  async index(path: string) {
     try {
       const files = await fileExplorer.discover(path)
-      console.log(`Found ${files.length} files to process`)
+      const project = await projectsRepository.create(path)
 
       if (files.length === 0) {
         return {
@@ -26,15 +20,11 @@ export class Indexer {
       }
 
       const { results, errors } = await fileExplorer.processInBatches(files, (filePath: string) =>
-        this.indexFile(filePath)
+        this.indexFile(filePath, project.id)
       )
 
       const processedFiles = results.filter(result => result !== null).length
       const failedFiles = errors.length
-
-      console.log(
-        `Indexing completed: ${processedFiles} files processed, ${failedFiles} files failed`
-      )
 
       return {
         totalFiles: files.length,
@@ -46,22 +36,23 @@ export class Indexer {
         })),
       }
     } catch (error) {
-      console.error('Error during folder indexing:', error)
       throw new Error(`Failed to index folder ${path}: ${error}`)
     }
   }
 
-  async indexFile(filePath: string) {
+  async indexFile(filePath: string, projectId: string) {
     try {
-      const chunks = await chunker.processFile(filePath)
-      const newCodeChunks = await repository.insertCodeChunks(chunks)
+      const chunks = await chunker.processFile(filePath, projectId)
+      const newCodeChunks = await chunkEmbeddingsRepository.insertCodeChunks(chunks)
 
       const embeddings = await embedder.generate(newCodeChunks)
-      const newEmbeddings = await repository.insertEmbeddings(newCodeChunks, embeddings)
+      const newEmbeddings = await chunkEmbeddingsRepository.insertEmbeddings(
+        newCodeChunks,
+        embeddings
+      )
 
       return { newCodeChunks, newEmbeddings }
     } catch (error) {
-      console.error('Error indexing file:', error)
       throw new Error(`Failed to index file ${filePath}: ${error}`)
     }
   }

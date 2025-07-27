@@ -14,9 +14,9 @@ class CodeSearchTool implements Tool {
         description: 'Perform semantic search on indexed code chunks',
         inputSchema: CodeSearchInputSchema,
       },
-      async ({ query }) => {
+      async ({ query, projects }) => {
         try {
-          const result = await semanticSearch.search(query)
+          const result = await semanticSearch.search(query, { projects })
 
           return {
             content: [
