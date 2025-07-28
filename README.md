@@ -30,7 +30,8 @@ Edit your `claude_mcp_settings.json` file:
       "command": "npx",
       "args": ["@hpbyte/h-codex-mcp"],
       "env": {
-        "OPENAI_API_KEY": "your_openai_api_key_here",
+        "LLM_API_KEY": "your_llm_api_key_here", 
+        "LLM_BASE_URL": "your_llm_base_url_here (default is openai baseurl: https://api.openai.com/v1)",
         "DB_CONNECTION_STRING": "postgresql://postgres:password@localhost:5432/h-codex"
       }
     }
@@ -91,8 +92,9 @@ Edit your `claude_mcp_settings.json` file:
 ## 🔧 Configuration Options
 
 | Environment Variable   | Description                      | Default                                                 |
-| ---------------------- | -------------------------------- | ------------------------------------------------------- |
-| `OPENAI_API_KEY`       | OpenAI API key for embeddings    | Required                                                |
+|------------------------|----------------------------------| ------------------------------------------------------- |
+| `LLM_API_KEY`          | LLM API key for embeddings       | Required                                                |
+| `LLM_BASE_URL`         | LLM Base url key for embeddings  | `https://api.openai.com/v1`                                                |
 | `EMBEDDING_MODEL`      | OpenAI model for embeddings      | `text-embedding-3-small`                                |
 | `CHUNK_SIZE`           | Maximum chunk size in characters | `1000`                                                  |
 | `SEARCH_RESULTS_LIMIT` | Max search results returned      | `10`                                                    |

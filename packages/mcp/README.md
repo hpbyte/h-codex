@@ -23,7 +23,8 @@ h-codex MCP server can be integrated with various AI assistants that support the
       "command": "npx",
       "args": ["@hpbyte/h-codex-mcp"],
       "env": {
-        "OPENAI_API_KEY": "your_openai_api_key_here",
+        "LLM_API_KEY": "your_llm_api_key_here",
+        "LLM_BASE_URL": "your_llm_base_url_here (default is openai baseurl: https://api.openai.com/v1)",
         "DB_CONNECTION_STRING": "postgresql://postgres:password@localhost:5432/h-codex"
       }
     }
@@ -40,7 +41,8 @@ h-codex MCP server can be integrated with various AI assistants that support the
    - **Command**: `npx`
    - **Arguments**: `["@hpbyte/h-codex-mcp"]`
    - **Environment Variables**:
-     _ `OPENAI_API_KEY`: `your-openai-api-key`
+     _ `LLM_API_KEY`: `your-llm-api-key`
+     _ `LLM_BASE_URL`: `your_llm_base_url_here (default is openai baseurl: https://api.openai.com/v1)`
      _ And any additional database configuration variables
 
 ### Other MCP Clients

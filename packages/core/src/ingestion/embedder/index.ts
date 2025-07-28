@@ -9,6 +9,7 @@ export class Embedder {
   constructor() {
     this.openai = new OpenAI({
       apiKey: embeddingsConfig.apiKey,
+      baseURL: embeddingsConfig.baseURL,
     })
   }
 
