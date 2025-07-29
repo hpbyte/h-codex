@@ -11,5 +11,6 @@
 
 .cursor
 .vscode
+.idea
 .claude
 *.txt
