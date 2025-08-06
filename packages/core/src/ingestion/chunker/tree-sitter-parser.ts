@@ -37,6 +37,8 @@ export class TreeSitterParser {
         return langObject.default
       case 'javascript-react':
         return langObject.default.javascriptReact
+      case 'python':
+        return langObject.default
       default:
         throw new Error(`Unsupported language: ${language}`)
     }

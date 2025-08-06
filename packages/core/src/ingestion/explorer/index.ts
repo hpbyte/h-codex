@@ -2,54 +2,8 @@ import fg from 'fast-glob'
 import { promises as fs } from 'fs'
 import { resolve, join } from 'path'
 
-export interface FileExplorerConfig {
-  supportedExtensions: string[]
-  ignoreFiles: string[]
-  defaultIgnorePatterns: string[]
-}
-
-export const DEFAULT_CONFIG: FileExplorerConfig = {
-  supportedExtensions: [
-    '.js',
-    '.jsx',
-    '.ts',
-    '.tsx',
-    '.mjs',
-    '.cjs',
-    '.json',
-    '.md',
-    '.yaml',
-    '.yml',
-    '.toml',
-    '.graphql',
-    '.gql',
-    '.sql',
-    '.html',
-    '.css',
-    '.scss',
-    '.sass',
-    '.less',
-    '.vue',
-    '.svelte',
-  ],
-  ignoreFiles: [
-    '.gitignore',
-    '.dockerignore',
-    '.eslintignore',
-    '.prettierignore',
-    '.npmignore',
-    '.vercelignore',
-  ],
-  defaultIgnorePatterns: [
-    'node_modules/**',
-    '.git/**',
-    '*.log',
-    '*.lock',
-    'package-lock.json',
-    'yarn.lock',
-    'bun.lockb',
-  ],
-}
+import type { FileExplorerConfig } from '../../types'
+import { DEFAULT_CONFIG } from '../../utils'
 
 export class FileExplorer {
   private config: FileExplorerConfig

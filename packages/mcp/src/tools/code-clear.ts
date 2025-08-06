@@ -44,4 +44,3 @@ class CodeClearTool implements Tool {
 const tool = new CodeClearTool()
 
 export default tool
-

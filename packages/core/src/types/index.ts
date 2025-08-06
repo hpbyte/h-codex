@@ -13,6 +13,7 @@ export type SupportedLanguage =
   | 'javascript'
   | 'typescript-react'
   | 'javascript-react'
+  | 'python'
 
 export interface SearchOptions {
   limit?: number
@@ -33,4 +34,10 @@ export interface SearchResult {
   context?: CodeChunk[]
   relevanceScore?: number
   rank: number
+}
+
+export interface FileExplorerConfig {
+  supportedExtensions: string[]
+  ignoreFiles: string[]
+  defaultIgnorePatterns: string[]
 }

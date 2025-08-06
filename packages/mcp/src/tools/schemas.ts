@@ -13,4 +13,3 @@ export const CodeSearchInputSchema = {
   query: z.string().describe('Search query to find similar code chunks'),
   projects: z.array(z.string()).optional().describe('List of project names to search within'),
 }
-

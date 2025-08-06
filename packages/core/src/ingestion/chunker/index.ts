@@ -151,6 +151,8 @@ export class CSTChunker {
         return 'javascript'
       case '.jsx':
         return 'javascript-react'
+      case '.py':
+        return 'python'
       default:
         throw new Error(`Unsupported language for file: ${filePath}`)
     }
