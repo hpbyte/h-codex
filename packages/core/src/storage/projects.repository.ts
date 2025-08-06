@@ -13,13 +13,15 @@ export class ProjectsRepository {
       description: 'Project description', // TODO: summarize project description
     }
 
+    await db.insert(projects).values(projectData).onConflictDoNothing({
+      target: projects.path,
+    })
+
     const [project] = await db
-      .insert(projects)
-      .values(projectData)
-      .onConflictDoNothing({
-        target: [projects.name],
-      })
-      .returning()
+      .select()
+      .from(projects)
+      .where(eq(projects.name, projectData.name))
+      .limit(1)
 
     if (!project) {
       throw new Error('Failed to create project')
