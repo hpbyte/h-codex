@@ -1,5 +1,8 @@
 import type { FileExplorerConfig } from '../types'
 
+export const maxChunkSize = 512 * 3
+export const coalesce = 50
+
 export const supportedExtensions = [
   '.js',
   '.jsx',

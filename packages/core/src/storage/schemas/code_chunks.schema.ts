@@ -11,7 +11,7 @@ export const codeChunks = pgTable('code_chunks', {
   startLine: integer('start_line').notNull(),
   endLine: integer('end_line').notNull(),
   nodeType: varchar('node_type', { length: 100 }).notNull(),
-  language: varchar('language', { length: 50 }).notNull(),
+  language: varchar('language', { length: 50 }),
   hash: varchar('hash', { length: 64 }).notNull().unique(),
   size: integer('size').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),

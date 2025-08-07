@@ -27,3 +27,8 @@ export function formatString(name: string) {
     .replace(/^$/, 'untitled-project')
     .substring(0, 100)
 }
+
+export function countLengthWithoutWhitespace(s: string) {
+  return s.replace(/\s/g, '').length
+}
+

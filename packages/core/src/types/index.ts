@@ -41,3 +41,10 @@ export interface FileExplorerConfig {
   ignoreFiles: string[]
   defaultIgnorePatterns: string[]
 }
+
+export type ChunkParams = {
+  filePath: string;
+  projectId: string;
+  language: SupportedLanguage
+}
+
