@@ -41,6 +41,7 @@ export const DEFAULT_CONFIG: FileExplorerConfig = {
   ],
   defaultIgnorePatterns: [
     'node_modules/**',
+    'dist/**',
     '.git/**',
     '*.log',
     '*.lock',
