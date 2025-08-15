@@ -12,12 +12,7 @@ export class Chunker {
 
       return await cstChunker.chunk({ filePath, projectId, language })
     } catch (error) {
-      if (error instanceof Error && error.message.includes('Unsupported language')) {
-        return await recursiveChunker.chunk({ filePath, projectId })
-      }
-
-      console.error(`Error processing file ${filePath}:`, error)
-      return []
+      return await recursiveChunker.chunk({ filePath, projectId })
     }
   }
 
@@ -44,4 +39,3 @@ export class Chunker {
 }
 
 export const chunker = new Chunker()
-

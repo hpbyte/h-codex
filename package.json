@@ -1,6 +1,6 @@
 {
   "name": "h-codex",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "A semantic code search tool for intelligent, cross-repo context retrieval.",
   "author": "Htoo Pyae Lwin",
   "license": "MIT",

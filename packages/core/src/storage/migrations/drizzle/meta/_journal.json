@@ -15,6 +15,13 @@
       "when": 1754444257446,
       "tag": "0001_project-path",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1755233022784,
+      "tag": "0002_language-optional",
+      "breakpoints": true
     }
   ]
 }

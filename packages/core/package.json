@@ -1,6 +1,6 @@
 {
   "name": "@hpbyte/h-codex-core",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Core indexing and search functionality for h-codex",
   "author": "Htoo Pyae Lwin",
   "license": "MIT",

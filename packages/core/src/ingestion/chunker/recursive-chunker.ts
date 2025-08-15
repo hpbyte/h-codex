@@ -1,4 +1,5 @@
 import * as fs from 'node:fs/promises'
+import * as path from 'path'
 import crypto from 'crypto'
 
 import type { ChunkParams, CodeChunkInsert } from '../../types'
@@ -40,10 +41,9 @@ export class RecursiveChunker {
       }
     }
 
-    const chunkSize = Math.floor(maxChunkSize / 2)
     const chunks: string[] = []
-    for (let i = 0; i < content.length; i += chunkSize) {
-      chunks.push(content.slice(i, i + chunkSize))
+    for (let i = 0; i < content.length; i += maxChunkSize) {
+      chunks.push(content.slice(i, i + maxChunkSize))
     }
 
     return chunks
@@ -58,13 +58,15 @@ export class RecursiveChunker {
     for (let i = 0; i < chunks.length; i++) {
       let chunk = chunks[i]!
 
-      if (countLengthWithoutWhitespace(chunk) < coalesce && i < chunks.length - 1) {
+      while (countLengthWithoutWhitespace(chunk) < coalesce && i < chunks.length - 1) {
         const nextChunk = chunks[i + 1]!
         const combinedChunk = chunk + '\n' + nextChunk
 
         if (combinedChunk.length <= maxChunkSize) {
           chunk = combinedChunk
           i++
+        } else {
+          break
         }
       }
 
@@ -78,7 +80,7 @@ export class RecursiveChunker {
         startLine: currentLineNumber,
         endLine,
         nodeType: 'text',
-        language: null,
+        language: this.getLanguage(filePath),
         hash: crypto.createHash('sha256').update(chunk).digest('hex'),
         size: chunk.length,
       })
@@ -88,7 +90,10 @@ export class RecursiveChunker {
 
     return processedChunks
   }
+
+  private getLanguage(filePath: string) {
+    return path.extname(filePath).toLowerCase().replace('.', '')
+  }
 }
 
 export const recursiveChunker = new RecursiveChunker()
-

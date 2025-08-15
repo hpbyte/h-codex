@@ -43,8 +43,7 @@ export interface FileExplorerConfig {
 }
 
 export type ChunkParams = {
-  filePath: string;
-  projectId: string;
+  filePath: string
+  projectId: string
   language: SupportedLanguage
 }
-

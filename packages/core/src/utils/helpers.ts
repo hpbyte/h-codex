@@ -31,4 +31,3 @@ export function formatString(name: string) {
 export function countLengthWithoutWhitespace(s: string) {
   return s.replace(/\s/g, '').length
 }
-
