@@ -15,6 +15,7 @@
   },
   "references": [
     { "path": "./packages/core" },
-    { "path": "./packages/mcp" }
+    { "path": "./packages/mcp" },
+    { "path": "./packages/cli" }
   ]
 }

@@ -38,3 +38,8 @@ jobs:
         run: cd packages/mcp && pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @hpbyte/h-codex-cli
+        run: cd packages/cli && pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,47 @@
+{
+  "name": "@hpbyte/h-codex-cli",
+  "version": "0.1.1",
+  "description": "CLI for h-codex - semantic code search tool",
+  "author": "Htoo Pyae Lwin",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "h-codex": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.tsx",
+    "start": "node dist/index.js",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "cli",
+    "code-search",
+    "semantic",
+    "embeddings",
+    "h-codex"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@hpbyte/h-codex-core": "workspace:*",
+    "ink": "^5.0.1",
+    "ink-text-input": "^6.0.0",
+    "meow": "^13.2.0",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.9",
+    "@types/react": "^18.3.11",
+    "tsx": "^4.19.1",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

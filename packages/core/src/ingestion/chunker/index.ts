@@ -11,7 +11,7 @@ export class Chunker {
       const language = this.detectLanguage(filePath)
 
       return await cstChunker.chunk({ filePath, projectId, language })
-    } catch (error) {
+    } catch {
       return await recursiveChunker.chunk({ filePath, projectId })
     }
   }
