@@ -2,6 +2,8 @@
 
 Command-line interface for h-codex semantic code search.
 
+<img width="1265" height="808" alt="h-codex-cli" src="https://github.com/user-attachments/assets/659b6489-2ba5-4250-b1b7-0a84a1417803" />
+
 ## Installation
 
 ```bash

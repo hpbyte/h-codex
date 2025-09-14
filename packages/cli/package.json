@@ -1,6 +1,6 @@
 {
   "name": "@hpbyte/h-codex-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CLI for h-codex - semantic code search tool",
   "author": "Htoo Pyae Lwin",
   "license": "MIT",
